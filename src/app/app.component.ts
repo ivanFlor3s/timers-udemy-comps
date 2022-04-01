@@ -13,8 +13,8 @@ export class AppComponent {
   }
 
   updateProgress(value: number){
+
     this.counterProgress = (this.totalCountDown - value )/this.totalCountDown * 100
-    
   }
 
   countDownFinish(){

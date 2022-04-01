@@ -1,11 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-countdown',
   templateUrl: './countdown.component.html',
   styleUrls: ['./countdown.component.scss']
 })
-export class CountdownComponent implements OnInit, OnDestroy {
+export class CountdownComponent implements OnInit, OnDestroy, OnChanges {
   @Input() counterStart: number = null
 
   @Output() onCounterZero = new EventEmitter<void>()
@@ -16,6 +16,10 @@ export class CountdownComponent implements OnInit, OnDestroy {
   private timerCountdownRef: any = null
 
   constructor() { }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.startCountDown()
+  }
 
   ngOnInit(): void {
     this.startCountDown()
@@ -32,11 +36,12 @@ export class CountdownComponent implements OnInit, OnDestroy {
   }
 
   doCountDown(){
-    this.onDecrease.emit(this.counter)
+    
     this.timerCountdownRef = setTimeout(() => {
       this.counter = this.counter - 1
+      this.onDecrease.emit(this.counter)
       this.processCountDown()
-    }, 1000);
+    }, 500);
   }
 
   private clearTimeOut(){
