@@ -13,6 +13,8 @@ export class CountdownComponent implements OnInit {
 
   public counter: number = 0
 
+  private timerCountdownRef: any = null
+
   constructor() { }
 
   ngOnInit(): void {
@@ -21,6 +23,7 @@ export class CountdownComponent implements OnInit {
 
   startCountDown(){
     if(!!this.counterStart && this.counterStart > 0  ){
+      this.clearTimeOut()
       this.counter = this.counterStart
       this.doCountDown()
     }
@@ -30,10 +33,21 @@ export class CountdownComponent implements OnInit {
 
   doCountDown(){
     this.onDecrease.emit(this.counter)
-    setTimeout(() => {
+    this.timerCountdownRef = setTimeout(() => {
       this.counter = this.counter - 1
       this.processCountDown()
     }, 1000);
+  }
+
+  private clearTimeOut(){
+    if(!!this.timerCountdownRef){
+      clearTimeout(this.timerCountdownRef)
+      this.timerCountdownRef = null
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.clearTimeOut()
   }
 
   processCountDown(){

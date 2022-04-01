@@ -1,4 +1,11 @@
 <h1>
-  <app-progress-bar  [progreso]="counterProgress"></app-progress-bar>
-  <app-countdown [counterStart]="totalCountDown" (onDecrease)="updateProgress($event)" (onCounterZero)="countDownFinish()"></app-countdown>
+  <app-progress-bar [progreso]="counterProgress"></app-progress-bar>
+  <app-countdown
+    #countdown
+    [counterStart]="totalCountDown"
+    (onDecrease)="updateProgress($event)"
+    (onCounterZero)="countDownFinish()"
+  ></app-countdown>
+
+  <button (click)="countdown.startCountDown(); counterProgress = 0">Reset</button>
 </h1>
