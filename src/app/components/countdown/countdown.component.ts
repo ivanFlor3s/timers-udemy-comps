@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-countdown',
@@ -7,6 +7,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CountdownComponent implements OnInit {
   @Input() counterStart: number = null
+
+  @Output() onCounterZero = new EventEmitter<void>()
+  @Output() onDecrease = new EventEmitter<number>()
 
   public counter: number = 0
 
@@ -26,6 +29,7 @@ export class CountdownComponent implements OnInit {
   }
 
   doCountDown(){
+    this.onDecrease.emit(this.counter)
     setTimeout(() => {
       this.counter = this.counter - 1
       this.processCountDown()
@@ -34,8 +38,7 @@ export class CountdownComponent implements OnInit {
 
   processCountDown(){
     if(this.counter == 0){
-      console.log('termine')
-
+      this.onCounterZero.emit(null)
     } else {
       this.doCountDown()
     }
