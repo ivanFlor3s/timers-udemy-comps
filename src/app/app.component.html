@@ -1,15 +1,1 @@
-<h1>
-  <app-progress-bar [progreso]="counterProgress"></app-progress-bar>
-  <app-countdown
-    #countdown
-    [counterStart]="totalCountDown"
-    (onDecrease)="updateProgress($event)"
-    (onCounterZero)="countDownFinish()"
-  ></app-countdown>
-  <div class="initInput">
-    <label for="countdown">Init on:</label>
-    <input type="number" [(ngModel)]="totalCountDown" id="countdown">
-  </div>
-
-  <button (click)="countdown.startCountDown(); counterProgress = 0">Reset</button>
-</h1>
+<router-outlet></router-outlet>
