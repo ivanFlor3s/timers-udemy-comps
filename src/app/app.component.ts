@@ -6,5 +6,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'udemy-comps';
+
+
+  counterProgress: number = 0
+  totalCountDown : number = 15
+
+  constructor(){
+
+  }
+
+  procesarAvance(value: number){
+    this.counterProgress = (this.totalCountDown - value )/this.totalCountDown * 100
+  }
+
+  informarFin(){
+    console.log('Termino')
+  }
+
+
 }

@@ -1,0 +1,18 @@
+:host{
+    div.form-container{
+        display: flex;
+        input{
+            margin-left: 20px;
+            height: 40px;
+            font-size: 20px;
+            flex:1;
+            min-width: 50px;
+        }
+    }
+    button {
+        margin-top: 20px;
+        width: 100%;
+        font-size: 20px;
+        height: 50px;
+    }
+}

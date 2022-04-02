@@ -1,0 +1,14 @@
+:host{
+    display: block;
+    width: 500px;
+    border: 1px solid;
+    height: 20px;
+    margin: 8px;
+    background-color: white;
+    
+    div{
+        width: 50%;
+        height: 100%;
+        background-color: rgb(2, 140, 238);
+    }
+}
