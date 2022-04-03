@@ -18,8 +18,8 @@ export class DisplayComponent implements OnInit, OnChanges {
     if(changes.time){
       const mins = Math.trunc(changes.time.currentValue / 60)
       const segs = changes.time.currentValue - mins * 60
-      this.minutos = ('0' + mins).substring(-2)
-      this.segundos = ('0' + segs).substring(-2)
+      this.minutos = ('0' + mins).slice(-2)
+      this.segundos = ('0' + segs).slice(-2)
     }
   }
 
