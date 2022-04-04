@@ -14,9 +14,7 @@ export class TimerService {
   public countDownEnd$ = this.countDownEndSource.asObservable()
   public countDown$ = this.countDownSource.asObservable()
 
-  get progressCountDown() {
-    return ((this.init - this.countDownSource.value) / this.init) * 100;
-  }
+ 
 
   constructor() {}
 
