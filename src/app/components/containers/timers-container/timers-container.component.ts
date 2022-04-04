@@ -12,4 +12,8 @@ export class TimersContainerComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  loguearFinish(){
+    console.log('Termino el timer')
+  }
+
 }

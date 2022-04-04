@@ -24,7 +24,8 @@ export class TimerComponent implements OnInit, OnDestroy {
     this.timerService.restartCountDown(this.init)
 
     this.countEndListener = this.timerService.countDownEnd$.subscribe(res => {
-      console.log('Termino la cuenta atras')
+      // console.log('Termino la cuenta atras')
+      this.onComplete.emit()
     })
 
   }
