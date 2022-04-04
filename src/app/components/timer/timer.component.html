@@ -2,7 +2,7 @@
     <app-progress-bar [progreso]="timerService.progressCountDown"></app-progress-bar>
 </div>
 
-<app-display [time]="timerService.countdown"></app-display>
+<app-display [time]="timerService.countDown$ |async"></app-display>
 <div class="buttons">
     <button *ngIf="timerService.paused" (click)="timerService.toggleActionButton()"> Play </button>
     <button *ngIf="!timerService.paused" (click)="timerService.toggleActionButton()"> Paused </button>

@@ -1,19 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable()
 export class TimerService {
 
   public paused: boolean = true;
   private countdownTimerRef: any;
-  public countdown: number = 0;
   private init: number = 0
 
-  private countDownEndSubject:Subject<void> = new Subject<void>()
-  public countDownEnd$ = this.countDownEndSubject.asObservable()
+  private countDownEndSource:Subject<void> = new Subject<void>()
+  private countDownSource: BehaviorSubject<number> = new BehaviorSubject(0)
+
+  public countDownEnd$ = this.countDownEndSource.asObservable()
+  public countDown$ = this.countDownSource.asObservable()
 
   get progressCountDown() {
-    return ((this.init - this.countdown) / this.init) * 100;
+    return ((this.init - this.countDownSource.value) / this.init) * 100;
   }
 
   constructor() {}
@@ -27,20 +29,20 @@ export class TimerService {
     if (this.init && this.init > 0) {
       this.paused = true;
       this.clearTimeout();
-      this.countdown = this.init;
+      this.countDownSource.next(this.init)
     }
   }
 
   private doCountdown() {
     this.countdownTimerRef = setTimeout(() => {
-      this.countdown = this.countdown - 1;
+      this.countDownSource.next(this.countDownSource.getValue() - 1) 
       this.processCountdown();
     }, 1000);
   }
 
   private processCountdown() {
-    if (this.countdown == 0) {
-      this.countDownEndSubject.next()
+    if (this.countDownSource.getValue()  <= 0) {
+      this.countDownEndSource.next()
     } else {
       this.doCountdown();
     }
