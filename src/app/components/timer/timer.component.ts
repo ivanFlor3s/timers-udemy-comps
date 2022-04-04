@@ -9,11 +9,24 @@ import { BaseCounterDownComponent } from '../../base/counter-down.component';
 })
 export class TimerComponent extends BaseCounterDownComponent implements OnInit {
 
+  public paused: boolean = true
+
   constructor() {
     super()
    }
 
+  restartCountDown(){
+    
+  }
+
+  toggleActionButton(){
+    this.paused = !this.paused
+  }
+
+  
+
   ngOnInit(): void {
+    
   }
 
 }
