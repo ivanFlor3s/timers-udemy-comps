@@ -1,10 +1,10 @@
 <div class="progress">
-    <app-progress-bar [progreso]="progressCountDown"></app-progress-bar>
+    <app-progress-bar [progreso]="timerService.progressCountDown"></app-progress-bar>
 </div>
 
-<app-display [time]="countdown"></app-display>
+<app-display [time]="timerService.countdown"></app-display>
 <div class="buttons">
-    <button *ngIf="paused" (click)="toggleActionButton()"> Play </button>
-    <button *ngIf="!paused" (click)="toggleActionButton()"> Paused </button>
-    <button (click)="restartCountDown()">RESTART</button>
+    <button *ngIf="timerService.paused" (click)="timerService.toggleActionButton()"> Play </button>
+    <button *ngIf="!timerService.paused" (click)="timerService.toggleActionButton()"> Paused </button>
+    <button (click)="timerService.restartCountDown()">RESTART</button>
 </div>
