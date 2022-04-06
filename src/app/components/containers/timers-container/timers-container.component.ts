@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class TimersContainerComponent implements OnInit {
 
   isAddTimerVisible: boolean = false
-
+  time: number = 0
   constructor() { }
 
   ngOnInit(): void {
