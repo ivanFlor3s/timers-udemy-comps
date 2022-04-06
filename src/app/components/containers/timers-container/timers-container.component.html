@@ -4,5 +4,9 @@
     <app-timer (onComplete)="loguearFinish()"[init]="150"></app-timer>
     <app-timer (onComplete)="loguearFinish()"[init]="10"></app-timer>
 
-    <button class="add"> + </button>
+    <button class="add" type="button" (click)="toggleAddTimer()"> + </button>
+    <app-alert-view [hidden]="!isAddTimerVisible"
+    (onCancel)="toggleAddTimer()"
+    (onSubmit)="toggleAddTimer()"
+    ></app-alert-view>
 </div>
