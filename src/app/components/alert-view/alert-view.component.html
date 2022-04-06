@@ -9,14 +9,14 @@
   
       <div class="message">
         <ng-content >
-            
+
         </ng-content>
         
       </div>
   
       <div class="footer">
         <button (click)="onCancel.emit()" class="cancel-button">Cancel</button>
-        <button (click)="onSubmit.emit(time)">Ok</button>
+        <button (click)="onSubmit.emit()">Ok</button>
       </div>
     </div>
   
