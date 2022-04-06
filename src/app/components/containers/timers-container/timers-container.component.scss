@@ -13,6 +13,22 @@
         app-timer{
             flex-grow: 1;
         }
+
+        button.add{
+            border: none;
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
+            width: 4rem;
+            height: 4rem;
+            font-size: 2rem;
+            border-radius: 50%;
+            background-color: #005bfb;
+            cursor: pointer;
+            color: whitesmoke;
+            margin: 10px;
+        }
     }
+
 
 }
