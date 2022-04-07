@@ -8,19 +8,25 @@ import { Component, OnInit } from '@angular/core';
 export class TimersContainerComponent implements OnInit {
 
   isAddTimerVisible: boolean = false
+  isFinishAlertVisible: boolean = false
+
   time: number = 0
-  timers: number[] = [10,60,120]
+  timers: number[] = [3,60,120]
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  loguearFinish(){
-    console.log('Termino el timer')
-  }
-
   toggleAddTimer(){
     this.isAddTimerVisible = !this.isAddTimerVisible
+  }
+
+  showAlertFinish(){
+    this.isFinishAlertVisible = true
+    setTimeout(() => {
+    this.isFinishAlertVisible = false
+      
+    }, 3000);
   }
 
   addTimer(){

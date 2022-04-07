@@ -1,20 +1,32 @@
 <div>
-    <h1>Timers</h1>
-    <app-timer (onComplete)="loguearFinish() " *ngFor="let timer of timers" [init]="timer"></app-timer>
-    <button class="add" type="button" (click)="toggleAddTimer()"> + </button>
-    <app-alert-view [hidden]="!isAddTimerVisible"
+  <h1>Timers</h1>
+  <app-timer
+    (onComplete)="showAlertFinish()"
+    *ngFor="let timer of timers"
+    [init]="timer"
+  ></app-timer>
+  <button class="add" type="button" (click)="toggleAddTimer()">+</button>
+  <app-alert-view
+    [hidden]="!isAddTimerVisible"
     (onCancel)="toggleAddTimer()"
     (onSubmit)="toggleAddTimer()"
-    >
+  >
     <h3>Agregar nuevo timer</h3>
 
     <label>Set the number of seconds for your timer</label>
-    <input [(ngModel)]="time" type="number">
+    <input [(ngModel)]="time" type="number" />
 
-    
-    <button footer-button (click)="toggleAddTimer()" class="cancel-button">Cancel</button>
+    <button footer-button (click)="toggleAddTimer()" class="cancel-button">
+      Cancel
+    </button>
     <button footer-button (click)="addTimer()">Ok</button>
+  </app-alert-view>
 
-</app-alert-view>
-    
+  <app-alert-view *ngIf="isFinishAlertVisible">
+    <h3>Finalizo el timer</h3>
+    <p>El timer termino con su cuenta atras</p>
+    <button footer-button (click)="isFinishAlertVisible = false" class="cancel-button">
+        Entiendo
+      </button>
+  </app-alert-view>
 </div>
