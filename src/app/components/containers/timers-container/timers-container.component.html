@@ -1,9 +1,6 @@
 <div>
     <h1>Timers</h1>
-    <app-timer (onComplete)="loguearFinish()"[init]="50"></app-timer>
-    <app-timer (onComplete)="loguearFinish()"[init]="150"></app-timer>
-    <app-timer (onComplete)="loguearFinish()"[init]="10"></app-timer>
-
+    <app-timer (onComplete)="loguearFinish() " *ngFor="let timer of timers" [init]="timer"></app-timer>
     <button class="add" type="button" (click)="toggleAddTimer()"> + </button>
     <app-alert-view [hidden]="!isAddTimerVisible"
     (onCancel)="toggleAddTimer()"
@@ -16,7 +13,7 @@
 
     
     <button footer-button (click)="toggleAddTimer()" class="cancel-button">Cancel</button>
-    <button footer-button (click)="toggleAddTimer()">Ok</button>
+    <button footer-button (click)="addTimer()">Ok</button>
 
 </app-alert-view>
     

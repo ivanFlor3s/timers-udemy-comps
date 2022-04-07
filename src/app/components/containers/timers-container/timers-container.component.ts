@@ -9,6 +9,7 @@ export class TimersContainerComponent implements OnInit {
 
   isAddTimerVisible: boolean = false
   time: number = 0
+  timers: number[] = [10,60,120]
   constructor() { }
 
   ngOnInit(): void {
@@ -20,6 +21,11 @@ export class TimersContainerComponent implements OnInit {
 
   toggleAddTimer(){
     this.isAddTimerVisible = !this.isAddTimerVisible
+  }
+
+  addTimer(){
+    this.timers.push(this.time)
+    this.toggleAddTimer()
   }
 
 }
